@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "API de cursos do projeto Impacta",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cauereple/impacta-react-noturno.git"
+  },
+  "keywords": [
+    "curso",
+    "impacta",
+    "react"
+  ],
+  "author": "Cauê Rizzo Reple",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cauereple/impacta-react-noturno/issues"
+  },
+  "homepage": "https://github.com/cauereple/impacta-react-noturno#readme",
+  "dependencies": {
+    "mongoose": "^5.8.0"
+  }
+}
