@@ -18,3 +18,5 @@ server.use(bodyParser.json())
 server.listen(port, function(){
     console.log(`Servidor no ar, na porta ${port}`)
 })
+
+module.exports = server
