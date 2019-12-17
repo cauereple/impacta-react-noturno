@@ -1,5 +1,6 @@
 import React from 'react'
-import {Cabecalho} from '../../componentes/cabecalho'
+import { Cabecalho } from '../../componentes/cabecalho'
+import { CadastroCurso } from './cadastro';
 
 export class CursoIndex extends React.Component {
     render() {
@@ -7,6 +8,7 @@ export class CursoIndex extends React.Component {
             <div className="container">
                 <div className="container">
                     <Cabecalho titulo="Cursos" subtitulo="cadastro de cursos" />
+                    <CadastroCurso/>
                 </div>
             </div>
         )
