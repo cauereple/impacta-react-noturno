@@ -5,6 +5,7 @@ export class ListCurso extends Component {
     exibirLinhas(){
         //retorna a lista de props se existir
         const cursos = this.props.cursos || []
+        // .map é uma função que percorre uma lista e pode trazer uma nova lista
         return cursos.map(curso => (
             <tr key={curso._id}>
                 <td>{curso.codigo}</td>

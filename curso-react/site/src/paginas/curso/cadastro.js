@@ -29,24 +29,24 @@ export class CadastroCurso extends Component {
         }) 
     }
 
-    codigoChange(e){
-        this.setState({ codigo : e.target.value })
+    codigoChange(event){
+        this.setState({ codigo : event.target.value })
     }
 
-    descricaoChange(e){
-        this.setState({ descricao : e.target.value })
+    descricaoChange(event){
+        this.setState({ descricao : event.target.value })
     }
 
-    cargaHorariaChange(e){
-        this.setState({ cargaHoraria : e.target.value })
+    cargaHorariaChange(event){
+        this.setState({ cargaHoraria : event.target.value })
     }
 
-    precoChange(e){
-        this.setState({ preco : e.target.value })
+    precoChange(event){
+        this.setState({ preco : event.target.value })
     }
 
-    categoriaChange(e){
-        this.setState({ categoria : e.target.value })
+    categoriaChange(event){
+        this.setState({ categoria : event.target.value })
     }
 
     render() {
