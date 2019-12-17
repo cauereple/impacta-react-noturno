@@ -53,7 +53,9 @@ export class CadastroCurso extends Component {
         return (
             <div className="row border-bottom">
                 <div className="col-md-6">
-                    <FormCurso 
+                    <FormCurso
+                        /* do lado esquerdo é a chave e do lado direito o valor. 
+                        nesse caso do lado esquerdo é o nome da props, e do lado direito está buscando do state Vamos chamar essa props no nosso formulário, já que aqui estamos alterando o state*/ 
                         codigo={this.state.codigo}
                         codigoChange={this.codigoChange.bind(this)}
 
