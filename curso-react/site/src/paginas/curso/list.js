@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export class ListCurso extends Component {
 
-    exibirLinhas(){
+    exibirLinhas() {
         //retorna a lista de props se existir
         const cursos = this.props.cursos || []
         // .map é uma função que percorre uma lista e pode trazer uma nova lista
@@ -10,6 +10,16 @@ export class ListCurso extends Component {
             <tr key={curso._id}>
                 <td>{curso.codigo}</td>
                 <td>{curso.descricao}</td>
+                <td>
+                    <button className="btn btn-success ml-3"
+                        onClick={() => this.props.consultarCurso(curso)}>
+                        <i className="fa fa-check"></i>
+                    </button>
+                    <button className="btn btn-danger ml-3"
+                        onClick={() => this.props.removerCurso(curso)}>
+                        <i className="fa fa-trash-o"></i>
+                    </button>
+                </td>
             </tr>
         ))
     }
@@ -23,6 +33,7 @@ export class ListCurso extends Component {
                         <tr>
                             <th>Código</th>
                             <th>Descrição</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>

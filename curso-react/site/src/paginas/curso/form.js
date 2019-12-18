@@ -45,7 +45,7 @@ export class FormCurso extends Component {
                             className="col-sm-4 col-form-label">
                             Preço:</label>
                         <div className="col-sm-8 col-8">
-                            <input type="text"
+                            <input type="number"
                                 className="form-control" id="preco" value={this.props.preco} onChange={this.props.precoChange}/>
                         </div>
                     </div>
@@ -65,8 +65,16 @@ export class FormCurso extends Component {
 
                     <div className="form-group row">
                         <button
-                            className="btn btn-primary ml-3 mb-3">
-                            Adicionar
+                            className="btn btn-primary ml-3 mb-3"
+                            onClick={this.props.adicionar} // qual o evento que eu quero = {qual a função que vai ser chamada}
+                            >
+                            {this.props.isAtualizar ? 'Atualizar' : 'Adicionar'}
+                        </button>
+                        <button
+                            className="btn btn-primary ml-3 mb-3"
+                            onClick={this.props.limpar}
+                            >
+                            Limpar
                         </button>
                     </div>
 
