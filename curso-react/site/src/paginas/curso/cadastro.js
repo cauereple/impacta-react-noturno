@@ -67,20 +67,12 @@ export class CadastroCurso extends Component {
 
         if (_id) {
             axios.put(`${URL}/${_id}`, body)
-                .then(_ => {
-                    this.trataSucesso(event, 'Curso atualizado')
-                })
-                .catch(error => {
-                    this.trataErro(error, 'Ocorreu erro ao adicionar curso')
-                })
+                .then(_ => this.trataSucesso(event, 'Curso atualizado'))
+                .catch(error => this.trataErro(error, 'Ocorreu erro ao adicionar curso'))
         } else {
             axios.post(URL, body)
-                .then(_ => {
-                    this.trataSucesso(event, 'Curso adicionado')
-                })
-                .catch(error => {
-                    this.trataErro(error, 'Ocorreu erro ao adicionar curso')
-                })
+                .then(_ => this.trataSucesso(event, 'Curso adicionado'))
+                .catch(error => this.trataErro(error, 'Ocorreu erro ao adicionar curso'))
         }
     }
 
@@ -96,10 +88,10 @@ export class CadastroCurso extends Component {
     }
 
     limpar(event) {
-        if (event) {
+        if(event){
             event.preventDefault()
         }
-
+        
         this.setState(this.initialState)
     }
 
@@ -149,6 +141,7 @@ export class CadastroCurso extends Component {
                         categoriaChange={this.categoriaChange.bind(this)}
 
                         adicionar={this.adicionar.bind(this)} //Não passamos o parênteses aqui, pq não queremos que o código a execute nessa parte, passamos apenas a referência da mesma
+                        limpar={this.limpar.bind(this)}
 
                         isAtualizar={this.state._id ? true : false}
                     />
@@ -157,7 +150,6 @@ export class CadastroCurso extends Component {
                     <ListCurso
                         cursos={this.state.cursos} /* toda vez que for chamado, o ListCurso vai receber uma alteração do state.cursos     cursos=    é uma props */
                         removerCurso={this.remover.bind(this)}
-                        limpar={this.limpar.bind(this)}
                         consultarCurso={this.consultar.bind(this)}
                     />
                 </div>
