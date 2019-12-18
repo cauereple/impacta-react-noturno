@@ -88,10 +88,10 @@ export class CadastroCurso extends Component {
     }
 
     limpar(event) {
-        if(event){
+        if (event) {
             event.preventDefault()
         }
-        
+
         this.setState(this.initialState)
     }
 
