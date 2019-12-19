@@ -5,9 +5,9 @@ const INITIAL_STATE = {
     telefone: 11983224815,
     assunto: 'Informações sobre React'
 }
-//state = INITIAL_STATE recebo um parametro, se esse parametro estiver indefinido, ele será o valor colocado depois do igual
+//state = INITIAL_STATE recebo um parametro, se esse parametro estiver indefinido, ele será o valor colocado depois do igual. o Nome disso é DEFAULT PARAMETER
 export default function(state = INITIAL_STATE, action){ // Definição padrão de um redutor --> export default com state e action
-    switch(action.type){
+    switch(action.type){ // switch é um controlador de fluxo. Ele olha cada if, em vez de fazermos vários if's
         case 'ATUALIZA_DATA' : return {...state, data : action.value}
         case 'ATUALIZA_NOME' : return {...state, nome : action.value}
         default : return state

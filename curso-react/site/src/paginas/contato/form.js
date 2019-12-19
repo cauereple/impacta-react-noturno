@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux' //vamos usar essa propriedade do redux para usar a função abaixo como props
+import { bindActionCreators } from 'redux' // transforma as funções em action creators. Vamos usar essa propriedade do redux para usar a função abaixo como props
 import { 
-    dataOnChange,
+    dataOnChange, // aqui importamos as funções criadas nas Actions
     nomeOnChange
 
 } from '../../actions/contatoActions' //Agora fazemos todos os callbacks (funções genéricas) como Actions, separadamente e deopis importamos para onde queremos usar
@@ -21,6 +21,7 @@ class ContatoForm extends React.Component {
                             <input type="date"
                                 className="form-control" id="data"
                                 value={this.props.data}
+                                //onChange espera uma função que tem como parâmetro um evento
                                 onChange={this.props.dataOnChange} />
                         </div>
                     </div>
