@@ -5,10 +5,16 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom' // BrowserRouter é para "escutar" o navegador.
 
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import reducers from './reducers'
+
 // BrowserRouter envolve nosso App inteiro
 ReactDOM.render(
     <BrowserRouter> 
-        <App />
+        <Provider store={createStore(reducers)}> {/* Onde ficará salvo nossa store */}
+            <App />
+        </Provider>
     </BrowserRouter>
 , document.getElementById('root'));
 
