@@ -3,12 +3,41 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux' // transforma as funções em action creators. Vamos usar essa propriedade do redux para usar a função abaixo como props
 import { 
     dataOnChange, // aqui importamos as funções criadas nas Actions
-    nomeOnChange
-
+    nomeOnChange,
+    emailOnChange,
+    telefoneOnChange,
+    assuntoOnChange,
+    limpar,
+    adicionar
 } from '../../actions/contatoActions' //Agora fazemos todos os callbacks (funções genéricas) como Actions, separadamente e deopis importamos para onde queremos usar
+
+const mapStoreToProps = store => ({ //pega da store e trazer em forma de props
+    data: store.contato.data,
+    nome: store.contato.nome,
+    email: store.contato.email,
+    telefone: store.contato.telefone,
+    assunto: store.contato.assunto
+})
+
+const mapActionToProps = dispatch => bindActionCreators({
+    dataOnChange,
+    nomeOnChange,
+    emailOnChange,
+    telefoneOnChange,
+    assuntoOnChange,
+    limpar,
+    adicionar
+}, dispatch)
 
 
 class ContatoForm extends React.Component {
+
+    preAdicionar(evento){
+        evento.preventDefault()
+        const {data, nome, email, telefone, assunto, adicionar} = this.props
+        adicionar(data, nome, email, telefone, assunto)
+    }
+
     render() {
         return (
             <div>
@@ -41,7 +70,8 @@ class ContatoForm extends React.Component {
                         <div className="col-sm-9">
                             <input type="email"
                                 className="form-control" id="email"
-                                value={this.props.email} />
+                                value={this.props.email}
+                                onChange={this.props.emailOnChange} />
                         </div>
                     </div>
                     <div className="form-group row">
@@ -50,7 +80,8 @@ class ContatoForm extends React.Component {
                         <div className="col-sm-9">
                             <input type="number"
                                 className="form-control" id="telefone"
-                                value={this.props.telefone} />
+                                value={this.props.telefone}
+                                onChange={this.props.telefoneOnChange} />
                         </div>
                     </div>
                     <div className="form-group row">
@@ -59,12 +90,18 @@ class ContatoForm extends React.Component {
                         <div className="col-sm-9">
                             <textarea className="form-control"
                                 id="assunto" rows="5"
-                                value={this.props.assunto} />
+                                value={this.props.assunto}
+                                onChange={this.props.assuntoOnChange} />
                         </div>
                     </div>
                     <div className="form-group row">
-                        <button className="btn btn-primary ml-3 mb-3">
+                        <button className="btn btn-primary ml-3 mb-3"
+                        onClick={this.preAdicionar.bind(this)}>
                             Adicionar
+                        </button>
+                        <button className="btn btn-primary ml-3 mb-3"
+                        onClick={this.props.limpar}>
+                            Limpar
                         </button>
                     </div>
                 </form>
@@ -73,17 +110,4 @@ class ContatoForm extends React.Component {
     }
 }
 
-const mapStoreToProps = store => ({ //pega da store e trazer em forma de props
-    data: store.contato.data,
-    nome: store.contato.nome,
-    email: store.contato.email,
-    telefone: store.contato.telefone,
-    assunto: store.contato.assunto
-})
-
-const mapActionToProps = dispatch => bindActionCreators({
-    dataOnChange,
-    nomeOnChange
-}, dispatch)
-
-export default connect(mapStoreToProps, mapActionToProps)(ContatoForm)
+export default connect(mapStoreToProps, mapActionToProps)(ContatoForm) //conectando o mapStoreToProps e o mapActionToProps com a class ContatoForm com a Store
