@@ -2,7 +2,7 @@ import { combineReducers } from 'redux' // combina os reducers
 import contatoReducer from './contatoReducer'
 
 
-const reducers = combineReducers({ //junta váris funções redutoras
+const reducers = combineReducers({ //combina várias funções redutoras
     contato : contatoReducer // chamamos nossa função redutora de tabela contato
 })
 
