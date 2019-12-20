@@ -6,13 +6,17 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom' // BrowserRouter é para "escutar" o navegador.
 
 import { Provider } from 'react-redux' // componente do react-redux que é onde a Store vai ficar salva
-import { createStore } from 'redux' // criadora da store
+import { createStore, applyMiddleware } from 'redux' // criadora da store e aplicando os Middlewares
+import thunk from 'redux-thunk'
 import reducers from './reducers' //
+
+
+const storeWithMiddleware = applyMiddleware(thunk)(createStore) //chama uma função, o resultado da função é o thunk e com o resultado da primeira função, executa o createStore e todo esse resultado é salvo na variável
 
 // BrowserRouter envolve nosso App inteiro
 ReactDOM.render(
     <BrowserRouter> 
-        <Provider store={createStore(reducers)}> {/* Onde ficará salvo nossa store */}
+        <Provider store={storeWithMiddleware(reducers)}> {/* Onde ficará salvo nossa store */}
             <App />
         </Provider>
     </BrowserRouter>
